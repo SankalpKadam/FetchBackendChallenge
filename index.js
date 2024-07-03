@@ -9,7 +9,7 @@ app.use(express.json())
 // app.get('/', (req, res) => {
 //     res.send(receipts)
 // })
-app.use(router)
+app.use('/receipts',router)
 app.listen(port, ()=>{
     console.log(`Server is listening on port ${port}`);
 })
