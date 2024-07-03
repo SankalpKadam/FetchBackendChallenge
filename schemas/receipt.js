@@ -1,4 +1,4 @@
-import { Items } from "./items";
+import { Items } from "./items.js";
 export class Receipt {
     constructor(receipt) {
         this.retailer = receipt.retailer;
