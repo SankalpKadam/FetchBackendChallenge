@@ -20,8 +20,12 @@ export class Receipt {
         if (typeof purchaseDate !== 'string') {
             return false
         }
+        // const datePattern = /^(19|20)\d\d-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+        // return datePattern.test(purchaseDate)
         const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-        return datePattern.test(purchaseDate)
+        if (!datePattern.test(purchaseDate)) return false;
+        const date = new Date(purchaseDate);
+        return !isNaN(date.getTime()) && date.toISOString().startsWith(purchaseDate);
     }
 
     #validatePurchaseTime(purchaseTime) {
@@ -40,24 +44,31 @@ export class Receipt {
         return totalPattern.test(total)
     }
 
-    #validateItems(itemsArray){
+    #validateItems(itemsArray) {
         if (!Array.isArray(itemsArray) || itemsArray.length < 1) {
             return false
         }
-        itemsArray.forEach(item => {
+        for (const item of itemsArray) {
             if(!Items.validateItem(item)){
                 return false
             }
-        });
+        }
         return true
     }
 
-    static validateReceipt(receipt){
+    static validateReceipt(receipt) {
         const receiptInstance = new Receipt(receipt)
-        return receiptInstance.#validateRetailer(receiptInstance.retailer) &&
-        receiptInstance.#validatePurchaseDate(receiptInstance.purchaseDate) &&
-        receiptInstance.#validatePurchaseTime(receiptInstance.purchaseTime) &&
-        receiptInstance.#validateTotal(receiptInstance.total) &&
-        receiptInstance.#validateItems(receiptInstance.items)
+
+        if (!receiptInstance.#validateRetailer(receiptInstance.retailer)) return false
+
+        if (!receiptInstance.#validatePurchaseDate(receiptInstance.purchaseDate)) return false
+
+        if (!receiptInstance.#validatePurchaseTime(receiptInstance.purchaseTime)) return false
+
+        if (!receiptInstance.#validateTotal(receiptInstance.total)) return false
+
+        if (!receiptInstance.#validateItems(receiptInstance.items)) return false
+
+        return true
     }
 }
