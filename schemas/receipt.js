@@ -10,7 +10,7 @@ export class Receipt {
     //private methods to validate each field
     #validateRetailer(retailer) {
         if (typeof retailer !== 'string') {
-            return False
+            return false
         }
         const retailerPattern = /^[\w\s\-&]+$/;
         return retailerPattern.test(retailer);
@@ -18,7 +18,7 @@ export class Receipt {
 
     #validatePurchaseDate(purchaseDate) {
         if (typeof purchaseDate !== 'string') {
-            return False
+            return false
         }
         const datePattern = /^\d{4}-\d{2}-\d{2}$/;
         return datePattern.test(purchaseDate)
@@ -26,7 +26,7 @@ export class Receipt {
 
     #validatePurchaseTime(purchaseTime) {
         if (typeof purchaseTime !== 'string') {
-            return False
+            return false
         }
         const timePattern = /^(?:[01]\d|2[0-3]):[0-5]\d$/;
         return timePattern.test(purchaseTime);
@@ -34,7 +34,7 @@ export class Receipt {
 
     #validateTotal(total) {
         if (typeof total !== 'string') {
-            return False
+            return false
         }
         const totalPattern = /^\d+\.\d{2}$/;
         return totalPattern.test(total)
@@ -42,13 +42,14 @@ export class Receipt {
 
     #validateItems(itemsArray){
         if (!Array.isArray(itemsArray) || itemsArray.length < 1) {
-            return False
+            return false
         }
         itemsArray.forEach(item => {
             if(!Items.validateItem(item)){
-                return False
+                return false
             }
         });
+        return true
     }
 
     static validateReceipt(receipt){

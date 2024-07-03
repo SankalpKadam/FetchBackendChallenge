@@ -6,7 +6,7 @@ export class Items {
     //private methods to validate each field
     #validateShortDescription(shortDescription){
         if (typeof shortDescription !== 'string') {
-            return False 
+            return false 
         }
         const shortDescriptionPattern = /^[\w\s\-]+$/
         return shortDescriptionPattern.test(shortDescription)
@@ -14,7 +14,7 @@ export class Items {
 
     #validatePrice(price) {
         if (typeof price !== 'string') {
-            return False
+            return false
         }
         const pricePattern = /^\d+\.\d{2}$/;
         return pricePattern.test(price)
