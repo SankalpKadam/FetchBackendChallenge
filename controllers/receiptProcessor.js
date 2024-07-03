@@ -13,7 +13,7 @@ const processTheReceipt = (req, res) => {
     }
 
     // calculate points if the receipt is valid
-    const points = calculatePoints(req.body)
+    const points = parseInt(calculatePoints(req.body))
 
     if (points === null) {
         return res.status(400).json({'description':"The point calculation was not successful"})
