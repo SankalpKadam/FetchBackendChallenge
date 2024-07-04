@@ -3,9 +3,9 @@
 
 ### Candidate - Sankalp Sunil Kadam
 
-##### Overview 
+#### Overview 
 
-This web service is built using Node Js and follows MVC architecture. 
+This web service is built using ***Node Js*** and follows ***MVC*** architecture. 
 It has two endpoints as per the specifications in the *api.yml* file given ![here](https://github.com/fetch-rewards/receipt-processor-challenge/blob/main/api.yml)
 
 The *schemas* folder is the schema of how a receipt and item should look like and helps in validating the incoming reciept.
@@ -16,13 +16,13 @@ The *routes* folder has a javascript file which specifies the api endpoints and 
 
 The *utils* folder helps with calculating the points and validating the receipt. 
 
-*** Technologies Used ***
+***Technologies Used***
 
 1. JavaScript
 2. Node Js
 3. Docker
 
-*** Steps to run ***
+### ***Steps to run***
 
 This repository contains the code and the docker image is on a remote repository, to run this web service just pull the docker image and run it. Steps for this are -
 
