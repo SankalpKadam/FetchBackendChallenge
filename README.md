@@ -33,5 +33,5 @@ This command should return login successful.
 3. Run the image - ``` docker run -d -p 3000:3000 sankalpkadam/receiptprocessor:0.0.1.RELEASE ```
 4. To verify the image is running - ``` docker container ls ```
 5. The image with its unique id should show up.<br> 
-The web service is now running on *** localhost and port 3000 ***
+The web service is now running on *** localhost and port 3000 ***.
 
